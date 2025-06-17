@@ -155,4 +155,4 @@ This is a parody bot. Not affiliated with the real pump.fun platform.
 
 ---
 
-**$CANT Token**: Only mentioned when directly asked. CA: XXXXXXX
+**$CANT Token**: Only mentioned when directly asked. CA: 7Ead7EPnK6FyyT3JbQp8PxrkHomDHtUJn7qX6nfXpump
