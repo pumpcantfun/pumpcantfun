@@ -133,10 +133,10 @@ class PumpCantFunBot {
   }
 
   startScheduledTweets() {
-    // Start posting after 12.5 minutes (no immediate tweet)
+    // Start posting after 3 minutes (no immediate tweet)
     this.tweetInterval = setInterval(
       () => this.postScheduledTweet(),
-      750000 // 12.5 minutes
+      180000 // 3 minutes
     );
   }
 
