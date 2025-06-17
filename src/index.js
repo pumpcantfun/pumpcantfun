@@ -55,7 +55,7 @@ class PumpCantFunBot {
     // Start mention polling
     await this.twitter.startPolling(
       (mention) => this.handleMention(mention),
-      60000 // Check every 60 seconds
+      120000 // Check every 2 minutes
     );
     
     // Start scheduled tweets
