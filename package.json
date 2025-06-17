@@ -1,0 +1,62 @@
+{
+  "name": "pumpcantfun",
+  "version": "1.0.0",
+  "description": "A parody Twitter bot for pump.fun's suspended account - bitter, sarcastic, and forever banned",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon --config config/app/nodemon.json src/index.js",
+    "test": "jest",
+    "test:tweets": "node test-tweets-simple.js",
+    "test:mentions": "node test-mentions.js",
+    "test:token": "node test-token-mentions.js",
+    "test:selective": "node test-token-selective.js",
+    "test:final": "node test-final-mentions.js",
+    "test:twitter": "node run-twitter-tests.js",
+    "test:connection": "node test-twitter-connection.js",
+    "test:rate-limits": "node test-rate-limit-simulator.js",
+    "test:queue": "node test-mention-queue.js",
+    "test:production": "node test-production-ready.js",
+    "test:search": "node test-search-mentions.js",
+    "test:production-search": "node test-production-search.js",
+    "pm2:start": "pm2 start config/app/ecosystem.config.js",
+    "pm2:stop": "pm2 stop pumpcantfun",
+    "pm2:restart": "pm2 restart pumpcantfun",
+    "pm2:status": "pm2 status",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "mongodb": "^6.16.0",
+    "mongoose": "^7.5.3",
+    "node-cron": "^3.0.2",
+    "openai": "^4.97.0",
+    "twitter-api-v2": "^1.22.0",
+    "uuid": "^9.0.1",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "pumpcantfun",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pumpcantfun"
+  },
+  "keywords": [
+    "twitter-bot",
+    "parody",
+    "pump.fun",
+    "crypto",
+    "memecoins",
+    "suspended"
+  ]
+}

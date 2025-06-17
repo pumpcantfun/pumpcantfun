@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "data/*",
+    "logs/*",
+    "node_modules/*"
+  ],
+  "watch": [
+    "src/",
+    "config/agents/"
+  ],
+  "ext": "js,json"
+} 
