@@ -4,6 +4,8 @@
  */
 
 const { TwitterApi } = require('twitter-api-v2');
+const fs = require('fs');
+const path = require('path');
 
 class TwitterMentionHandler {
   constructor(credentials) {
@@ -18,7 +20,37 @@ class TwitterMentionHandler {
     this.userId = null;
     this.username = null;
     this.lastMentionId = null;
-    this.processedMentions = new Set();
+    this.processedMentionsFile = path.join(__dirname, '../../data/processed_mentions.json');
+    this.processedMentions = this.loadProcessedMentions();
+  }
+
+  loadProcessedMentions() {
+    try {
+      if (fs.existsSync(this.processedMentionsFile)) {
+        const data = fs.readFileSync(this.processedMentionsFile, 'utf8');
+        const mentionIds = JSON.parse(data);
+        console.log(`📝 Loaded ${mentionIds.length} processed mention IDs`);
+        return new Set(mentionIds);
+      }
+    } catch (error) {
+      console.error('Error loading processed mentions:', error);
+    }
+    return new Set();
+  }
+
+  saveProcessedMentions() {
+    try {
+      // Ensure data directory exists
+      const dataDir = path.dirname(this.processedMentionsFile);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      
+      const mentionIds = Array.from(this.processedMentions);
+      fs.writeFileSync(this.processedMentionsFile, JSON.stringify(mentionIds, null, 2));
+    } catch (error) {
+      console.error('Error saving processed mentions:', error);
+    }
   }
 
   async initialize() {
@@ -81,6 +113,7 @@ class TwitterMentionHandler {
       for (const mention of mentions.data.data) {
         if (!this.processedMentions.has(mention.id)) {
           this.processedMentions.add(mention.id);
+          this.saveProcessedMentions(); // Save immediately
           
           newMentions.push({
             id: mention.id,
