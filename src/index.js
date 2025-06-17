@@ -5,7 +5,7 @@
 
 require('dotenv').config();
 require('dotenv').config({ path: '.env.production' });
-const TwitterMentionHandler = require('./src/twitter/twitter-mention-handler');
+const TwitterMentionHandler = require('./twitter/twitter-mention-handler');
 const { OpenAI } = require('openai');
 const fs = require('fs');
 const path = require('path');
@@ -25,7 +25,7 @@ class PumpCantFunBot {
     });
     
     this.agentConfig = JSON.parse(
-      fs.readFileSync(path.join(__dirname, 'config/agents/pumpcantfun-agent.json'), 'utf8')
+      fs.readFileSync(path.join(__dirname, '../config/agents/pumpcantfun-agent.json'), 'utf8')
     );
     
     this.isDryRun = process.env.DRY_RUN === 'true';
